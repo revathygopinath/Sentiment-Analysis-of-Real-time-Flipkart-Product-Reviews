@@ -1,8 +1,7 @@
-# Flipkart Sentiment Analysis  
-### Deployed Machine Learning Web Application 🚀
+# Flipkart Sentiment Analysis 🚀
+### Deployed Machine Learning Web Application
 
-A production-ready **Sentiment Analysis web application** built using Flipkart product reviews.  
-The app classifies customer reviews as **Positive** or **Negative** and is deployed on **AWS EC2** using **Streamlit**, ensuring **24/7 availability**.
+A production-ready **Sentiment Analysis web application** built using Flipkart product reviews. The app classifies customer reviews as **Positive** or **Negative** and is deployed on **AWS EC2** using **Streamlit**, ensuring **24/7 availability**.
 
 ---
 
@@ -12,6 +11,7 @@ The app classifies customer reviews as **Positive** or **Negative** and is deplo
 ---
 
 ## 📌 Project Overview
+
 This project demonstrates an **end-to-end Machine Learning pipeline**, including:
 - Text preprocessing and feature extraction
 - Model training and evaluation
@@ -23,6 +23,7 @@ The application runs entirely on the server and does **not depend on the local m
 ---
 
 ## 🎯 Project Objective
+
 To build and deploy a sentiment analysis system that:
 - Processes real-world e-commerce product reviews
 - Performs text preprocessing and sentiment prediction
@@ -32,6 +33,7 @@ To build and deploy a sentiment analysis system that:
 ---
 
 ## 🧠 Model Details
+
 - **Algorithm:** Logistic Regression  
 - **Vectorization:** Bag of Words (CountVectorizer)  
 - **Classes:** Positive / Negative  
@@ -47,19 +49,22 @@ To build and deploy a sentiment analysis system that:
 ---
 
 ## 🛠️ Tech Stack
-- **Programming Language:** Python  
-- **Machine Learning:** scikit-learn  
-- **NLP:** NLTK  
-- **Web Framework:** Streamlit  
-- **Cloud Platform:** AWS EC2  
-- **Operating System:** Ubuntu 22.04 LTS  
-- **Process Management:** systemd  
+
+| Category | Technology |
+|----------|-----------|
+| **Programming Language** | Python |
+| **Machine Learning** | scikit-learn |
+| **NLP** | NLTK |
+| **Web Framework** | Streamlit |
+| **Cloud Platform** | AWS EC2 |
+| **Operating System** | Ubuntu 22.04 LTS |
+| **Process Management** | systemd |
 
 ---
 
 ## 📁 Project Structure
 
-```text
+```
 Sentiment-Analysis-of-Real-time-Flipkart-Product-Reviews/
 │
 ├── app/
@@ -68,7 +73,7 @@ Sentiment-Analysis-of-Real-time-Flipkart-Product-Reviews/
 ├── models/
 │   ├── sentiment_model.pkl    # Trained ML model
 │   ├── bow_vectorizer.pkl     # CountVectorizer
-│   └── model_metadata.json   # Model information
+│   └── model_metadata.json    # Model information
 │
 ├── data/                      # Dataset files (if any)
 ├── notebooks/                 # EDA & experimentation notebooks
@@ -76,27 +81,28 @@ Sentiment-Analysis-of-Real-time-Flipkart-Product-Reviews/
 │
 ├── requirements.txt           # Python dependencies
 └── README.md                  # Project documentation
+```
 
 ---
 
 ## 🚀 Deployment (AWS EC2 + Streamlit)
 
 ### Deployment Environment
-- **EC2 Instance Type:** t3.micro  
-- **Region:** ap-south-2  
-- **Inbound Ports Enabled:**
-  - SSH – 22
-  - Streamlit – 8501
 
----
+- **EC2 Instance Type:** t3.micro
+- **Region:** ap-south-2
+- **Inbound Ports Enabled:**
+  - SSH – `22`
+  - Streamlit – `8501`
 
 ### Deployment Steps
-1. Launched an EC2 instance with Ubuntu 22.04.
-2. Configured security groups to allow SSH and Streamlit access.
-3. Cloned the GitHub repository onto the EC2 instance.
-4. Created and activated a Python virtual environment.
-5. Installed dependencies from `requirements.txt`.
-6. Configured the Streamlit app to load trained ML models.
+
+1. Launched an EC2 instance with Ubuntu 22.04
+2. Configured security groups to allow SSH and Streamlit access
+3. Cloned the GitHub repository onto the EC2 instance
+4. Created and activated a Python virtual environment
+5. Installed dependencies from `requirements.txt`
+6. Configured the Streamlit app to load trained ML models
 7. Deployed the application as a **systemd service** to ensure:
    - Automatic restart on failure
    - Auto-start on server reboot
@@ -107,50 +113,85 @@ Sentiment-Analysis-of-Real-time-Flipkart-Product-Reviews/
 ## 🧪 Testing and Monitoring
 
 ### Testing
-- Verified public accessibility using EC2 public IP.
-- Tested predictions using positive, negative, and edge-case reviews.
-- Restarted the service to validate recovery.
-- Rebooted the EC2 instance to confirm auto-start functionality.
+- ✅ Verified public accessibility using EC2 public IP
+- ✅ Tested predictions using positive, negative, and edge-case reviews
+- ✅ Restarted the service to validate recovery
+- ✅ Rebooted the EC2 instance to confirm auto-start functionality
 
 ### Monitoring
-- Service status monitored using:
-  ```bash
-  sudo systemctl status flipkart-streamlit
-Application logs monitored using:
 
+**Service health:**
+```bash
+sudo systemctl status flipkart-streamlit
+```
+
+**Application logs:**
+```bash
 sudo journalctl -u flipkart-streamlit -f
-CPU and memory usage monitored using:
+```
 
+**System resources:**
+```bash
 top
 df -h
+```
+
 The application is configured with automatic restart to ensure high availability.
 
-✅ Production Highlights
-End-to-end ML pipeline (training → inference → deployment)
+---
 
-Cloud-hosted and laptop-independent
+## ✅ Production Highlights
 
-Auto-restart and reboot-safe deployment
+- ✨ End-to-end ML pipeline (training → inference → deployment)
+- ☁️ Cloud-hosted and laptop-independent
+- 🔄 Auto-restart and reboot-safe deployment
+- 🌐 Real-world deployment using AWS and systemd
 
-Real-world deployment using AWS and systemd
+---
 
-⚠️ Notes
-The model was trained using scikit-learn 1.5.1 and served using scikit-learn 1.3.x.
+## ⚠️ Notes
 
-Version mismatch generates warnings only; inference remains stable.
+- The model was trained using **scikit-learn 1.5.1** and served using **scikit-learn 1.3.x**
+- Version mismatch generates warnings only; inference remains stable
+- The application runs fully on the server and does not depend on the local machine
 
-The application runs fully on the server and does not depend on the local machine.
+---
 
-👩‍💻 Author
-Revathy Gopinath
+## 📌 Future Improvements
 
-🔗 GitHub: https://github.com/revathygopinath
+- [ ] Add multi-class sentiment classification
+- [ ] Store predictions in a database
+- [ ] Integrate CI/CD pipeline
+- [ ] Add analytics dashboard
+- [ ] Implement model versioning
+- [ ] Add user authentication
 
-📌 Future Improvements
-Add multi-class sentiment classification
+---
 
-Store predictions in a database
+## 👩‍💻 Author
 
-Integrate CI/CD pipeline
+**Revathy Gopinath**
 
-Add analytics dashboard
+🔗 GitHub: [github.com/revathygopinath](https://github.com/revathygopinath)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/revathygopinath/Sentiment-Analysis-of-Real-time-Flipkart-Product-Reviews/issues).
+
+---
+
+## ⭐ Show your support
+
+Give a ⭐️ if this project helped you!
+
+---
+
+**Made with ❤️ by Revathy Gopinath**
