@@ -1,0 +1,12 @@
+{
+    "model_name": "Flipkart Product Review Sentiment Classifier",
+    "algorithm": "Logistic Regression",
+    "vectorizer": "CountVectorizer",
+    "max_features": 5000,
+    "ngram_range": "(1,2)",
+    "train_test_split": "80:20",
+    "accuracy": 0.9105,
+    "f1_score": 0.9473,
+    "training_samples": 7825,
+    "version": "1.0"
+}
