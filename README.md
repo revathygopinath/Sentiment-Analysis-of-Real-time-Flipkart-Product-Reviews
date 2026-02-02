@@ -61,16 +61,19 @@ To build and deploy a sentiment analysis system that:
 Sentiment-Analysis-of-Real-time-Flipkart-Product-Reviews/
 │
 ├── app/
-│ └── app.py
+│   └── app.py                 # Streamlit application
+│
 ├── models/
-│ ├── sentiment_model.pkl
-│ ├── bow_vectorizer.pkl
-│ └── model_metadata.json
-├── data/
-├── notebooks/
-├── scripts/
-├── requirements.txt
-└── README.md
+│   ├── sentiment_model.pkl    # Trained ML model
+│   ├── bow_vectorizer.pkl     # CountVectorizer
+│   └── model_metadata.json   # Model information
+│
+├── data/                      # Dataset files (if any)
+├── notebooks/                 # EDA & experimentation notebooks
+├── scripts/                   # Helper scripts
+│
+├── requirements.txt           # Python dependencies
+└── README.md                  # Project documentation
 
 
 ---
