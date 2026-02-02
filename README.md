@@ -58,6 +58,8 @@ To build and deploy a sentiment analysis system that:
 ---
 
 ## 📁 Project Structure
+
+```text
 Sentiment-Analysis-of-Real-time-Flipkart-Product-Reviews/
 │
 ├── app/
@@ -74,7 +76,6 @@ Sentiment-Analysis-of-Real-time-Flipkart-Product-Reviews/
 │
 ├── requirements.txt           # Python dependencies
 └── README.md                  # Project documentation
-
 
 ---
 
