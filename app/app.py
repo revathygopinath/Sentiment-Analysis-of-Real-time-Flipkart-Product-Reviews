@@ -1,9 +1,14 @@
 import streamlit as st
 import joblib
-import dill
 import time
 import json
 import os
+import re
+import nltk
+
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 
 # =========================
 # Page config
@@ -36,7 +41,38 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-MODEL_DIR = "models"
+# =========================
+# Paths
+# =========================
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_DIR = os.path.join(BASE_DIR, "models")
+
+# =========================
+# NLTK setup
+# =========================
+nltk.download("punkt")
+nltk.download("stopwords")
+nltk.download("wordnet")
+
+lemmatizer = WordNetLemmatizer()
+stop_words = set(stopwords.words("english"))
+
+# =========================
+# Text preprocessing
+# =========================
+def preprocess_text(text):
+    text = str(text).lower()
+    text = re.sub(r"read more", "", text)
+    text = re.sub(r"http\S+|www\S+|https\S+", "", text)
+    text = re.sub(r"\S+@\S+", "", text)
+    text = re.sub(r"[^a-zA-Z\s]", "", text)
+    text = re.sub(r"\s+", " ", text).strip()
+
+    tokens = word_tokenize(text)
+    tokens = [w for w in tokens if w not in stop_words and len(w) > 2]
+    tokens = [lemmatizer.lemmatize(w) for w in tokens]
+
+    return " ".join(tokens)
 
 # =========================
 # Load model artifacts
@@ -46,25 +82,22 @@ def load_model():
     model = joblib.load(os.path.join(MODEL_DIR, "sentiment_model.pkl"))
     vectorizer = joblib.load(os.path.join(MODEL_DIR, "bow_vectorizer.pkl"))
 
-    with open(os.path.join(MODEL_DIR, "preprocess_pipeline.pkl"), "rb") as f:
-        preprocess_func = dill.load(f)
-
     with open(os.path.join(MODEL_DIR, "model_metadata.json"), "r") as f:
         metadata = json.load(f)
 
-    return model, vectorizer, preprocess_func, metadata
+    return model, vectorizer, metadata
 
-model, vectorizer, preprocess_func, metadata = load_model()
+model, vectorizer, metadata = load_model()
 
 # =========================
 # Header
 # =========================
 st.title("🛒 Flipkart Product Review Sentiment Analysis")
-st.markdown("AI-powered sentiment classifier for product reviews")
+st.markdown("AI-powered sentiment classifier for Flipkart product reviews")
 st.markdown("---")
 
 # =========================
-# Sidebar (NEW SECTION)
+# Sidebar
 # =========================
 with st.sidebar:
     st.markdown("## 📝 How to Use")
@@ -94,12 +127,12 @@ with st.sidebar:
     """)
 
 # =========================
-# Main layout
+# Layout
 # =========================
 col1, col2 = st.columns([2, 1])
 
 # =========================
-# Input section
+# Input & Prediction
 # =========================
 with col1:
     st.markdown("## 📝 Enter Review")
@@ -115,7 +148,7 @@ with col1:
             st.warning("⚠️ Please enter a valid review")
         else:
             with st.spinner("Analyzing sentiment..."):
-                cleaned = preprocess_func(review_text)
+                cleaned = preprocess_text(review_text)
 
                 if len(cleaned.split()) < 3:
                     st.warning("⚠️ At least 3 meaningful words are required for prediction")
@@ -128,12 +161,11 @@ with col1:
 
                     inference_time = (time.time() - start_time) * 1000
 
-                    label_map = {0: "NEGATIVE", 1: "POSITIVE"}
-                    sentiment = label_map[prediction]
+                    sentiment = "POSITIVE" if prediction == 1 else "NEGATIVE"
                     confidence = max(probabilities) * 100
-                    # ⚠️ Low confidence warning
+
                     if confidence < 60:
-                         st.info("⚠️ Model is uncertain. Adding more details may improve accuracy.")
+                        st.info("⚠️ Model is uncertain. Adding more details may improve accuracy.")
 
                     st.markdown("---")
                     st.markdown("## 🎯 Prediction Result")
@@ -160,7 +192,7 @@ with col1:
                         st.write(cleaned)
 
 # =========================
-# Stats section
+# Stats
 # =========================
 with col2:
     st.markdown("## 📈 Model Stats")
