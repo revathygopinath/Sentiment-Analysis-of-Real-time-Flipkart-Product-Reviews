@@ -29,27 +29,35 @@ The project extends a Flipkart Product Review Sentiment Analysis use case with *
 
 ---
 
-## 📁 Repository Structure
+## 📂 Repository Structure
 
+```text
 flipkart-sentiment-mlflow/
 │
 ├── data/
-│ └── data.csv
+│   └── data.csv
 │
 ├── mlops/
-│ └── screenshots/
-│ ├── mlflow/
-│ │ ├── 01_experiment_runs.png
-│ │ ├── 02_run_params_metrics.png
-│ │ ├── 03_metric_plots.png
-│ │ ├── 04_hyperparameter_plots.png
-│ │ ├── 05_model_registry.png
-│ │ ├── 06_model_tags.png
-│ │ └── 07_run_Params_Metrics_Artifacts.png
-│ └── prefect/
+│   └── screenshots/
+│       ├── mlflow/
+│       │   ├── 01_experiment_runs.png
+│       │   ├── 02_run_params_metrics.png
+│       │   ├── 03_metric_plots.png
+│       │   ├── 04_hyperparameter_plots.png
+│       │   ├── 05_model_registry.png
+│       │   ├── 06_model_tags.png
+│       │   └── 07_run_Params_Metrics_Artifacts.png
+│       │
+│       └── prefect/
+│           ├── 01_flow_graph.png
+│           ├── 02_flow_run_completed.png
+│           └── 03_deployment.png
 │
 ├── notebooks/
+│   └── EDA_Modelling_Flipkart_Product_Reviews_MLflow.ipynb
+│
 ├── scripts/
+│
 ├── prefect_flow.py
 ├── README.md
 └── .gitignore
