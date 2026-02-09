@@ -62,18 +62,6 @@ flipkart-sentiment-mlflow/
 ├── README.md
 └── .gitignore
 
-
----
-## 🔍 MLflow – Experiment Tracking
-
-### 📊 Experiment Runs
-Tracks multiple model runs across different algorithms, vectorizers, and hyperparameters.
-
-![MLflow Experiment Runs](mlops/screenshots/mlflow/01_experiment_runs.png)
-
-
-
-
 ## 🚀 How to Run Locally
 
 ```bash
