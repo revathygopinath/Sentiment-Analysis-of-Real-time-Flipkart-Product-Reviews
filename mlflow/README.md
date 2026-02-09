@@ -64,94 +64,15 @@ flipkart-sentiment-mlflow/
 
 
 ---
-
 ## 🔍 MLflow – Experiment Tracking
 
-### ✔ Experiment Runs
-Tracks multiple model runs with different:
-- Algorithms (Logistic Regression, SVM, Random Forest)
-- Vectorizers (BoW, TF-IDF)
-- Hyperparameters
+### 📊 Experiment Runs
+Tracks multiple model runs across different algorithms, vectorizers, and hyperparameters.
 
-📸  
-![MLflow Runs](mlops/screenshots/mlflow/01_experiment_runs.png)
+![MLflow Experiment Runs](mlops/screenshots/mlflow/01_experiment_runs.png)
 
----
 
-### ✔ Parameters & Metrics
-- Logged parameters: `model`, `feature`, `max_features`
-- Logged metrics: `accuracy`, `f1_score`
 
-📸  
-![Params & Metrics](mlops/screenshots/mlflow/02_run_params_metrics.png)
-
----
-
-### ✔ Metric Plots
-Visual comparison of:
-- Accuracy vs F1-score across runs
-
-📸  
-![Metric Plots](mlops/screenshots/mlflow/03_metric_plots.png)
-
----
-
-### ✔ Hyperparameter Visualization
-Parallel coordinate plots for hyperparameter tuning
-
-📸  
-![Hyperparameter Plots](mlops/screenshots/mlflow/04_hyperparameter_plots.png)
-
----
-
-## 📦 Model Registry
-
-### ✔ Model Registration
-Best-performing model registered in MLflow Model Registry
-
-📸  
-![Model Registry](mlops/screenshots/mlflow/05_model_registry.png)
-
----
-
-### ✔ Model Tagging
-Models tagged for:
-- Algorithm
-- Feature type
-- Owner
-- Stage (production)
-- Use case
-
-📸  
-![Model Tags](mlops/screenshots/mlflow/06_model_tags.png)
-
----
-
-### ✔ Model Artifacts
-Stored artifacts include:
-- Model pickle
-- Environment files
-- Requirements
-
-📸  
-![Artifacts](mlops/screenshots/mlflow/07_run_Params_Metrics_Artifacts.png)
-
----
-
-## ⏱️ Prefect – Workflow Orchestration
-
-### ✔ Training Pipeline
-Prefect flow handles:
-- Data loading
-- Model training
-- Metric logging to MLflow
-
-### ✔ Scheduling
-- Flow deployed using Prefect
-- Scheduled to run automatically (hourly)
-- Monitored via Prefect UI
-
----
 
 ## 🚀 How to Run Locally
 
